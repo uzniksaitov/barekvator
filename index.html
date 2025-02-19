@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кафе "Екватор"</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f2e7;
+            color: #5a3e2b;
+            text-align: center;
+            position: relative;
+        }
+        .header {
+            background-color: #8b5e3b;
+            padding: 20px;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            border-bottom: 5px solid #5a3e2b;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .menu, .home, .support {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            display: none;
+        }
+        .home {
+            background: linear-gradient(135deg, #f7efe1, #e0c3a3);
+            padding: 30px;
+            border: 2px solid #8b5e3b;
+        }
+        .contact {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .nav {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #8b5e3b;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 24px;
+            background-color: #8b5e3b;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: 2px solid #5a3e2b;
+        }
+    </style>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.menu, .home, .support').forEach(div => div.style.display = 'none');
+            document.querySelector('.' + section).style.display = 'block';
+        }
+    </script>
+</head>
+<body onload="showSection('home')">
+    <div class="nav">
+        <a onclick="showSection('home')">Головна</a>
+        <a onclick="showSection('menu')">Меню</a>
+        <a onclick="showSection('support')">Підтримка</a>
+    </div>
+    <div class="header">Кафе "Екватор"</div>
+    
+    <div class="container">
+        <div class="home">
+            <h2>Ласкаво просимо!</h2>
+            <p><strong>Адреса:</strong> вул. Мечникова, 30, Одесса</p>
+            <p><strong>Телефони:</strong> +380965065555, +380632355555</p>
+            <p><strong>ТікТок:</strong> <a class="button" href="https://tiktok.com/@example">Наш TikTok</a></p>
+            <p style="font-size: 20px; color: #8b5e3b; font-weight: bold;">Акція: -20% на сніданки!</p>
+        </div>
+        <div class="menu">
+            <h2>Меню</h2>
+            <ul>
+                <li>Еспресо - 50 грн</li>
+                <li>Капучино - 70 грн</li>
+                <li>Лате - 80 грн</li>
+                <li>Тістечко "Наполеон" - 90 грн</li>
+                <li>Чізкейк - 100 грн</li>
+            </ul>
+        </div>
+        <div class="support">
+            <h2>Підтримка</h2>
+            <p>Telegram: <a class="button" href="https://t.me/example">Наш Telegram</a></p>
+            <p>Viber: <a class="button" href="viber://chat?number=%2B380123456789">Наш Viber</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
