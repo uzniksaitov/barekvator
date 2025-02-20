@@ -9,93 +9,120 @@
             font-family: 'Georgia', serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f2e7;
+            background: linear-gradient(180deg, #f5e7d3, #e8c39e);
             color: #5a3e2b;
             text-align: center;
             position: relative;
         }
         .header {
-            background-color: #8b5e3b;
-            padding: 20px;
+            background: #5a3e2b;
+            padding: 80px 20px 20px;
             color: white;
-            font-size: 28px;
+            font-size: 40px;
             font-weight: bold;
-            border-bottom: 5px solid #5a3e2b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
         }
         .container {
             max-width: 900px;
-            margin: auto;
+            margin: 40px auto;
             padding: 30px;
             background: white;
             border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
         }
         .menu, .home, .support {
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
             display: none;
         }
-        .home {
-            background: linear-gradient(135deg, #f7efe1, #e0c3a3);
-            padding: 30px;
-            border: 2px solid #8b5e3b;
-        }
-        .contact {
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
         .nav {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #8b5e3b;
-            padding: 10px;
-            border-radius: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #8b5e3b;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
         }
-        .nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
+        .nav .menu-icon {
+            font-size: 28px;
             cursor: pointer;
+            color: white;
         }
-        .button {
-            display: inline-block;
-            margin: 10px;
-            padding: 12px 24px;
-            background-color: #8b5e3b;
+        .nav-links {
+            display: none;
+            flex-direction: column;
+            background: #8b5e3b;
+            position: absolute;
+            top: 55px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .nav-links a {
             color: white;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
+            padding: 12px;
+            display: block;
+            font-size: 18px;
+        }
+        .show {
+            display: flex !important;
+        }
+        .contact-box {
             border: 2px solid #5a3e2b;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 8px;
+            margin: 5px;
+        }
+        .contact-box a {
+            text-decoration: none;
+            color: #5a3e2b;
+            font-weight: bold;
         }
     </style>
     <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        }
         function showSection(section) {
             document.querySelectorAll('.menu, .home, .support').forEach(div => div.style.display = 'none');
             document.querySelector('.' + section).style.display = 'block';
+            document.querySelector('.nav-links').classList.remove('show');
         }
     </script>
 </head>
 <body onload="showSection('home')">
     <div class="nav">
-        <a onclick="showSection('home')">Головна</a>
-        <a onclick="showSection('menu')">Меню</a>
-        <a onclick="showSection('support')">Підтримка</a>
+        <span class="menu-icon" onclick="toggleMenu()">☰</span>
+        <div class="nav-links">
+            <a onclick="showSection('home')">Головна</a>
+            <a onclick="showSection('menu')">Меню</a>
+            <a onclick="showSection('support')">Підтримка</a>
+        </div>
     </div>
-    <div class="header">Кафе "Екватор"</div>
-    
+    <div class="header">
+        Кафе "Екватор"
+    </div>
     <div class="container">
         <div class="home">
             <h2>Ласкаво просимо!</h2>
-            <p><strong>Адреса:</strong> вул. Мечникова, 30, Одесса</p>
-            <p><strong>Телефони:</strong> +380965065555, +380632355555</p>
-            <p><strong>ТікТок:</strong> <a class="button" href="https://tiktok.com/@example">Наш TikTok</a></p>
+            <p><strong>Адреса:</strong> вул.ул. Мечникова, 30</p>
+            <p class="contact-box"><strong>Телефони:</strong> +380965065555, +380632355555</p>
+            <p class="contact-box"><strong>ТікТок:</strong> <a href="https://tiktok.com/@example">Наш TikTok</a></p>
             <p style="font-size: 20px; color: #8b5e3b; font-weight: bold;">Акція: -20% на сніданки!</p>
         </div>
         <div class="menu">
@@ -110,13 +137,9 @@
         </div>
         <div class="support">
             <h2>Підтримка</h2>
-            <p>Telegram: <a class="button" href="https://t.me/example">Наш Telegram</a></p>
-            <p>Viber: <a class="button" href="viber://chat?number=%2B380123456789">Наш Viber</a></p>
+            <p class="contact-box">Telegram: <a href="https://t.me/example">Наш Telegram</a></p>
+            <p class="contact-box">Viber: <a href="viber://chat?number=%2B380123456789">Наш Viber</a></p>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
